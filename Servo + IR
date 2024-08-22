@@ -1,0 +1,28 @@
+#include <Servo.h>
+
+const int irPin = 2; // Pin connected to the IR sensor
+const int servoPin = 9; // Pin connected to the servo motor
+const int threshold = 500; // Example threshold value for IR sensor reading
+
+Servo myServo; // Create a Servo object
+
+void setup() {
+  pinMode(irPin, INPUT); // Set IR sensor pin as input
+  myServo.attach(servoPin); // Attach the servo to pin 9
+  myServo.write(0); // Initialize the servo position to 0 degrees
+}
+
+void loop() {
+  int sensorValue = analogRead(irPin); // Read the value from the IR sensor
+
+  if (sensorValue > threshold) { // If the sensor value exceeds the threshold
+    myServo.write(90); // Move the servo to 90 degrees
+  } else {
+    myServo.write(0); // Move the servo to 0 degrees
+  }
+  
+  delay(100); // Short delay for stability
+}
+
+  delay(100); // Short delay for stability
+}
